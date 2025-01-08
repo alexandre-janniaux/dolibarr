@@ -18,6 +18,14 @@ services:
             - internal-pod
             - external-pod
 
+    postgres:
+        image: postgres:latest
+        environment:
+            POSTGRES_PASSWORD: rootpassfordev
+        networks:
+            - internal-pod
+            - external-pod
+
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         environment:
@@ -37,7 +45,7 @@ services:
             PHP_INI_DATE_TIMEZONE: $PHP_INI_DATE_TIMEZONE
             PHP_INI_MEMORY_LIMIT: $PHP_INI_MEMORY_LIMIT
         volumes:
-            - ../../htdocs:/var/www/html/
+            - ../../../htdocs:/var/www/html/
             - ../../documents:/var/documents
         ports:
             - "80:80"
@@ -45,6 +53,7 @@ services:
         depends_on:
             - mariadb
             - mail
+            - postgres
         networks:
             - internal-pod
             - external-pod
