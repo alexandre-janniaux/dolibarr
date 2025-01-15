@@ -46,7 +46,8 @@ services:
             PHP_INI_MEMORY_LIMIT: $PHP_INI_MEMORY_LIMIT
         volumes:
             - ../../../htdocs:/var/www/html/
-            - ../../documents:/var/documents
+            - ../../documents:/var/www/documents
+            - ../../../../idsenvironnement/module_uptosign:/var/www/html/custom/uptosign/
         ports:
             - "80:80"
             - "9000:9000"
