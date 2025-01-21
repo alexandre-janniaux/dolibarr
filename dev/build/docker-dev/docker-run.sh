@@ -20,6 +20,7 @@ echo "[docker-run] => update '${PHP_INI_DIR}/conf.d/dolibarr-php.ini'"
 cat <<EOF > "${PHP_INI_DIR}/conf.d/dolibarr-php.ini"
 date.timezone = ${PHP_INI_DATE_TIMEZONE:-UTC}
 memory_limit = ${PHP_INI_MEMORY_LIMIT:-256M}
+display_errors = Off
 EOF
 
 exec apache2-foreground
